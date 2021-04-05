@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tab选项卡</title>
+    <style>
+        img {
+            width: 460px;
+            height: 460px;
+            display: none;
+        }
+
+        ul {
+            display: flex;
+            flex-direction: row;
+        }
+
+        li {
+            width: 50px;
+            list-style-type: none;
+            border: solid 1px slategrey;
+            text-align: center;
+            background-color: sandybrown;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul>
+            <li>大菊</li>
+            <li>短短</li>
+            <li>布偶</li>
+            <li>雷欧</li>
+
+        </ul>
+    </div>
+
+    <div>
+        <img src="./img/1.jpg" style="display: block;">
+        <img src="./img/gazi.jpg">
+        <img src="./img/1.jpg">
+        <img src="./img/gazi.jpg">
+    </div>
+    <script>
+        let li = document.getElementsByTagName('li');
+        let img = document.getElementsByTagName('img');
+        for(let i = 0; i<li.length; i++){
+            // 先
+            li[i].index = i
+            li[i].onmouseover = function (){
+                li[i].style.backgroundColor = 'yellow';
+                // 把所有图片都隐藏
+                for(let j=0; j<img.length;j++){
+                    img[j].style.display = 'none';
+                }
+                img[this.index].style.display = 'block'
+            }
+            li.onmouseout = function(){
+                li[i].style.backgroundColor = 'sandybrown';
+            }
+        }
+    </script>
+</body>
+
+</html>

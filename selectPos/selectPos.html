@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>缓速移动</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            position: relative;
+            background-color: sandybrown;
+        }
+    </style>
+</head>
+<body>
+    <div id="box" class="box">
+        
+    </div>
+    <div class="buttonBox">
+        <button>移动</button>
+        <button>停止</button>
+    </div>
+</body>
+<script>
+    let buts = document.getElementsByTagName('button');
+    let div = document.getElementById('box');
+    let body = document.body;
+    let num =0;
+    let timer = null;
+    buts[0].onclick = function(){
+        let speed = 20;
+        if(timer ==null){
+            timer = setInterval(() => {
+                num +=speed;
+                div.style.left = num + 'px';
+                if(num>body.offsetWidth - div.offsetWidth || num<=0){
+                    speed = -speed;
+                }
+            }, 50);
+        }
+    }
+    buts[1].onclick = function(){
+        clearInterval(timer);
+        timer = null;
+    }
+</script>
+</html>

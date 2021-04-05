@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>输入框</title>
+    <style>
+        .show{
+            background-color: red;
+            height: 400px;
+            width: 160px;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="search">
+            <input type="text" name="" id="val" placeholder="请输入关键词">
+            <input type="submit" name="" id="sub">
+        </div>
+        <div class="show" id="show"> </div>
+    </div>
+</body>
+<script>
+    let data = ['jjjj','jjjjjjjjj','jjjjjjjjjjjjjj']
+    let input = document.getElementById('val');
+    let show = document.getElementById('show');
+    // 键盘事件可以做个节流和防抖
+    input.onkeyup = function(){
+        show.style.display = 'block';
+        // 
+        let str = '';
+        data.forEach((item,index) => {
+            let res = item.indexOf(input.value);
+            if(res !=-1){
+                str +=`<p>${item}</p>`
+            }
+            console.log(str)
+        });
+        if(!input.value || !str){
+            show.innerHTML = `<p>暂无结果</p>`
+        }else{
+            show.innerHTML = str
+        }
+        
+    }
+
+    input.onblur = function(){
+        show.style.display = 'none';
+        input.value = ''
+    }
+</script>
+</html>

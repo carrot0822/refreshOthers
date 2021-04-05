@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <p><input type="checkbox" name="" id="" checked>尼古拉斯s</p>
+        <p><input type="checkbox" name="" >尼古斯</p>
+        <p><input type="checkbox" name="" >尼拉斯</p>
+        <p><input type="checkbox" name="" id="" checked>古拉斯</p>
+    </form>
+    <button>全选</button>
+    <button>全不选</button>
+    <button>反选</button>
+</body>
+<script>
+     // 选中三个形式 用户点击 标签加入checked属性 js使用checked方式
+     let but = document.getElementsByTagName('button');
+     let input = document.getElementsByTagName('input');
+     // 全选
+     but[0].onclick = function(){
+         for(let i=0; i<input.length;i++){
+             input[i].checked = true;
+         }
+     }
+     // 全不选
+     but[1].onclick = function(){
+         for(let i = 0;i<input.length;i++){
+             input[i].checked = true
+         }
+     }
+     // 反选
+     btn[2].onclick = function(){
+         for(let i = 0; i<input.length;i++){
+             input[i].checked = !input[i].checked;
+         }
+     }
+</script>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="v_code">
+        <div class="code_show">
+            <span class="code" id="checkCode">adddd</span>
+            <a id="linkbt">看不清换一张</a>
+        </div>
+
+        <div class="input_code">
+            <label for="inputCode">验证码:</label>
+            <input type="text" id="inputCode">
+            <span id="text_show"></span>
+        </div>
+        <input type="button" name="" id="button1" value="确定">
+    </div>
+</body>
+    <script>
+        // 生成0~？的数组函数
+        function createNumber(number){
+            let arr = []
+            for(let i =0;i<number;i++){
+                let num = i
+                arr.push(num)
+            }
+            console.log(arr)
+            return arr
+        }
+        // 生成26个字母 小写
+        function createword(){
+            var wordArr = []
+            for(let i=97;i<122;i++){
+                wordArr.push(String.fromCharCode(i))
+            }
+            console.log(wordArr)
+            return wordArr
+        }
+        
+        // 生成验证码
+        function getCode(){
+            let numberArr = createNumber(9);
+            let wordArr = createword();
+            let codeArr = [...numberArr,...wordArr];
+            let str = ''
+            for(let i=0; i<6; i++){
+                var num = Math.round(Math.random()*(15-0)+0)
+                str += codeArr[num]
+            }
+            return str
+            console.log(str)
+        }
+        createword()
+        createNumber(100)
+        
+
+        document.getElementById('checkCode').innerText = getCode()
+        document.getElementById('linkbt').onclick = function(){
+            document.getElementById('checkCode').innerText = getCode()
+        }
+        // 验证验证码
+        document.getElementById('button1').onclick = function(){
+            var code = document.getElementById('checkCode').innerText
+            var inputCode = document.getElementById('inputCode').value
+            if(code!=inputCode){
+                alert('您输入的验证码不正确');
+                document.getElementById('checkCode').innerText = getCode()
+                document.getElementById('inputCode').value = ''
+            } else {
+                alert('输入正确开始跳转')
+            }
+        }
+    </script>
+</html>
